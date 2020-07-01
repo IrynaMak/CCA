@@ -1,6 +1,8 @@
 const selectorGen = require ('./../data/selectors.json').general;
 const expectedGen = require ('./../data/expected.json').general;
 const selectorCnt = require ('./../data/selectors.json').counter;
+const expectedCnt = require ('./../data/expected.json').counter;
+
 describe('Complex Counter App', function () {
     describe('Getting to the page', function () {
         it('TC-001 Page title is Complex Counter App', function () {
@@ -23,7 +25,7 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(true);
         })
         it('TC-005 Label for Add Name Field', function () {
-            const actual = $$(selectorGen.addNameFieldLabel)[$$(selectorGen.addNameFieldLabel).length-2].isDisplayed();
+            const actual = $$(selectorGen.addNameFieldLabel)[$$(selectorGen.addNameFieldLabel).length - 2].isDisplayed();
             //$$('label')[$$('label').length-2]
             expect(actual).toEqual(true);
         })
@@ -32,7 +34,7 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(true);
         })
         it('TC-007 Label for Default Value Field', function () {
-            const actual = $$(selectorGen.defaultValueFieldLabel)[$$(selectorGen.defaultValueFieldLabel).length-1].isDisplayed();
+            const actual = $$(selectorGen.defaultValueFieldLabel)[$$(selectorGen.defaultValueFieldLabel).length - 1].isDisplayed();
             //$$('label')[$$('label').length-1]
             expect(actual).toEqual(true);
         })
@@ -51,7 +53,7 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(expectedGen.totalResult);
         })
         it('TC-011 Label for Add Name Field = Enter Counter Title:', function () {
-            const actual = $$(selectorGen.addNameFieldLabel)[$$(selectorGen.addNameFieldLabel).length-2].getText();
+            const actual = $$(selectorGen.addNameFieldLabel)[$$(selectorGen.addNameFieldLabel).length - 2].getText();
             expect(actual).toEqual(expectedGen.addNameFieldLabel);
         })
         it('TC-012 Placeholder for Add Name Field = Counter Name', function () {
@@ -59,7 +61,7 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(expectedGen.addNameField);
         })
         it('TC-013 Label for Default Value Field = Enter Initial Count:', function () {
-            const actual = $$(selectorGen.defaultValueFieldLabel)[$$(selectorGen.defaultValueFieldLabel).length-1].getText();
+            const actual = $$(selectorGen.defaultValueFieldLabel)[$$(selectorGen.defaultValueFieldLabel).length - 1].getText();
             expect(actual).toEqual(expectedGen.defaultValueFieldLabel);
         })
         it('TC-014 Placeholder for Default Value Field = 50', function () {
@@ -94,13 +96,32 @@ describe('Complex Counter App', function () {
             expect(actual).toBeDisplayed();
         })
         it('TC-021 Label for Default Value Field', function () {
-            const actual = $$(selectorGen.defaultValueFieldLabel)[$$(selectorGen.defaultValueFieldLabel).length-1].isDisplayed();
+            const actual = $$(selectorGen.defaultValueFieldLabel)[$$(selectorGen.defaultValueFieldLabel).length - 1].isDisplayed();
             //$$('label')[$$('label').length-1]
             expect(actual).toEqual(true);
         })
-        // it('TC-022 Add Counter', function () {
-        //     const actual = $(selectorGen.addCounterBtn).isDisplayed();
-        //     expect(actual).toEqual(true);
-        // })
+        it('TC-022 Delete button', function () {
+            const actual = $(selectorCnt.deleteBtn).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+        it('TC-023 Reset button', function () {
+            const actual = $(selectorCnt.resetBtn).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+        it('TC-024 Edit Name Field', function () {
+            const actual = $(selectorCnt.editNameField).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+        it('TC-025 Label for Edit Name Field', function () {
+            const actual = $(selectorCnt.editNameFieldLabel).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+    });
+    describe('Default Counter Elements value', function () {
+        it('TC-031 && TC-033 Default Buttons = -1, -2, -3, 1, 2, 3', function () {
+            const actual = $$(selectorCnt.blackBtn).map(el => el.getText());
+            expect(actual).toEqual(expectedCnt.blackBtn);
+        })
     });
 });
+
